@@ -16,20 +16,24 @@ module.exports = {
         },
         {
           type: 'twitter',
-          link: 'https://twitter.com/vuejs/vuepress',
+          link: 'https://twitter.com/kgrid',
         },
       ],
+      copyright: [{
+          text: '©2019 KGrid.org',
+          link: 'http://kgrid.org'
+      }]
     },
     modifyBlogPluginOptions(blogPlugnOptions) {
       const writingDirectoryClassifier = {
         id: 'writing',
         dirname: '_writings',
         path: '/writings/',
-        layout: 'IndexWriting',
-        itemLayout: 'Writing',
+        // layout: 'IndexWriting',
+        itemLayout: 'Post',
         itemPermalink: '/writings/:year/:month/:day/:slug',
         pagination: {
-          perPagePosts: 5,
+          lengthPerPage: 3,
         },
       }
 
