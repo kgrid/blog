@@ -1,0 +1,19 @@
+{
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "directories": {
+    "blog": "blog"
+  },
+  "project": "KGRID Tutorial",
+  "scripts": {
+    "dev": "vuepress dev blog --host localhost",
+    "build": "vuepress build blog"
+  },
+  "devDependencies": {
+    "vuepress": "^1.0.2",
+    "@vuepress/theme-blog": "^1.2.2"
+  }
+}
