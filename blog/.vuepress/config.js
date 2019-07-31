@@ -4,8 +4,8 @@ module.exports = {
   // theme: '@vuepress/blog',
   themeConfig: {
     nav: [
-      { text: 'Blog', link: '/blog/', },
-      // { text: 'Tags', link: '/tags/', },
+      { text: 'Blog', link: '/', },
+      { text: 'Tags', link: '/tags/', },
       { text: 'KGrid.org', link: 'https://kgrid.org' },
     ],
     footer: {
