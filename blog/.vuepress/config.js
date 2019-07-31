@@ -1,11 +1,11 @@
 module.exports = {
   base: '/',
   title: "KGrid Blog",
-  theme: '@vuepress/blog',
+  // theme: '@vuepress/blog',
   themeConfig: {
     nav: [
       { text: 'Blog', link: '/', },
-      // { text: 'Tags', link: '/tag/', },
+      // { text: 'Tags', link: '/tags/', },
       { text: 'KGrid.org', link: 'https://kgrid.org' },
     ],
     footer: {
@@ -20,25 +20,32 @@ module.exports = {
         },
       ],
       copyright: [{
-          text: '©2019 KGrid.org',
+          text: '(C)2019 KGrid.org',
           link: 'http://kgrid.org'
       }]
     },
     modifyBlogPluginOptions(blogPlugnOptions) {
-      const writingDirectoryClassifier = {
-        id: 'writing',
-        dirname: '_writings',
-        path: '/writings/',
-        // layout: 'IndexWriting',
+      const draftDirectoryClassifier = {
+        id: 'draft',
+        dirname: '_drafts',
+        path: '/drafts/',
         itemLayout: 'Post',
-        itemPermalink: '/writings/:year/:month/:day/:slug',
+        itemPermalink: '/drafts/:year/:month/:day/:slug',
         pagination: {
           lengthPerPage: 3,
         },
       }
 
-      blogPlugnOptions.directories.push(writingDirectoryClassifier)
+      blogPlugnOptions.directories.push(draftDirectoryClassifier)
       return blogPlugnOptions
     },
-  }
+  },
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-133554011-1' // UA-00000000-0
+      }
+    ]
+  ]
 }

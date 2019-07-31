@@ -9,11 +9,12 @@
   },
   "project": "KGRID Tutorial",
   "scripts": {
-    "dev": "vuepress dev blog --host localhost",
+    "dev": "vuepress dev blog -p 3000",
     "build": "vuepress build blog"
   },
   "devDependencies": {
-    "vuepress": "^1.0.2",
-    "@vuepress/theme-blog": "^1.2.2"
+    "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
+    "@vuepress/theme-blog": "^1.2.2",
+    "vuepress": "^1.0.2"
   }
 }

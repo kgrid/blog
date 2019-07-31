@@ -9,11 +9,11 @@ npm run dev
 ```
 
 
-### Links for posts, writings, and Tags
+### Links for posts, drafts, and Tags
 
 The published blog posts will be listed at the home page.
 
-The draft posts can be viewed at `/writings`.
+The draft posts can be viewed at `/drafts`.
 
 The tag list can be viewed at `/tag`.
 
