@@ -17,4 +17,11 @@ The draft posts can be viewed at `/drafts`.
 
 The tag list can be viewed at `/tag`.
 
+Please use the [Slugify CLI](https://github.com/sindresorhus/slugify-cli) to generate filenames for blog posts (it's been added as a dev dependency):
+
+```bash
+> npx slugify "Calling another KO's service?"
+calling-another-ko-s-service
+```
+
 
