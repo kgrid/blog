@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/blog/',
+  base: '/',
   title: "KGrid Blog",
   // theme: '@vuepress/blog',
   themeConfig: {
