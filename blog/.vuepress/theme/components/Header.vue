@@ -4,7 +4,7 @@
       <div class="header-wrapper">
         <div class="title">
           <NavLink
-            :link="$site.base"
+            :link="$themeConfig.nav[0].link"
             class="home-link"
           >{{ $site.title }}
           </NavLink>

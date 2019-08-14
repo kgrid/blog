@@ -1,7 +1,9 @@
 module.exports = {
   base: '/blog/',
+  home: '/',
   title: "KGrid Blog",
   // theme: '@vuepress/blog',
+  localePath:'/blog/',
   themeConfig: {
     nav: [
       { text: 'Blog', link: '/', },
