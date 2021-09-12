@@ -73,7 +73,7 @@ This move allowed us to uncouple the KO lifecycle (with the Activator as on refe
 >
 > 1. An *adapter* that can expose the capabilities of the *payload* (the API or interface specified by the service description on the KO) to clients
 
-***The developer/implementor of the KO is responsible for identifying or creating a suitable adapter and runtime!***
+***The developer/implementor of the KO is responsible for identifying a suitable adapter and runtime (or creating a new one)!***
 
 The Activator supplies a couple of these by default:
 
