@@ -119,10 +119,12 @@ In simple terms, every real-world use case we've been involved in has been a sin
 ### Packaged CBK is great! Let the professionals manage and organize it.
 
 Our work with the Taubman and other University of Michigan librarians and outreach to other informatics folks in the library and repository space, made it clear that our concept of a KGrid Library" for managing CBK at scale was naive. We learned:
-* Different communities drive the need for metadata, discovery, archival and dissemination of knowledge *for their own purposes*. The Knowledge Grid cannot hope to meet all these needs. Most repository systems are designed to meet the particular needs of a community. 
-* Our conceptual model (of packaged CBK representing knowledge as a managed resource and knowledge ready for practice) is important! We believe it is a suitable representation for *many* information management platforms, including: asset management, publishing and other communications as part of the scholarly, scientific record, indexing and discovery, and archival needs.
+* Different communities drive the need for metadata, discovery, archiving, and dissemination of knowledge *for their own purposes*. The Knowledge Grid cannot hope to meet all these needs. Most repository systems are designed to meet the particular needs of a community. 
+* Our conceptual model (of packaged CBK representing knowledge as a managed resource and knowledge ready for practice) is important! We believe it is a suitable representation usable across *many* information management platforms, including: asset management, publishing and other communications as part of the scholarly, scientific record, indexing and discovery, and archival stores.
 * We also believe that by conforming to existing and emerging standards and practices from software development, and typical research workflows, we allow for the broadest possible range of CBK to be represented as Knowledge Objects.
 * Our conceptual model of CBK is broad and overlaps with the domain workflow and process models of many other stakeholder groups and users. The Knowledge Grid cannot be successful by constraining how others may publish, use, organize, manage, and preserve their CBK. We must ensure *and demonstrate* interoperability with the widest variety of platforms and workflows.
 
-
-
+Interoperability probably includes demonstrating:
+* the packaged KOs can be used in other systems and platforms without special handling
+* the needs of other stakeholders and users can be met within the current KO packaging spec
+* packaged KOs can be transformed to/from or linked with other common formats for CBK and CBK-related artifacts 
