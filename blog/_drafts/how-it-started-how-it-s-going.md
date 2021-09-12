@@ -41,11 +41,11 @@ We started down this path by storing every component binary or file within a KO 
 
 But once we separated the KGrid Library (for finding and showing KOs) and the Activator (for getting payloads running) we found the Fedora Commons repo to be way too heavy for the simpler case of managing a "Shelf" of KOs cached locally and ready to be run by an activator. A simple collection of artifacts on the local filesystem was a better fit. The RDF representation was serialized as JSON-LD metadata file (based on the existing Fedora Commons serialization format for RDF containers). Interoperability was maintained.
 
-Having two different components that used a common entity, the KO, and the addition of import/export capabilities for these common "Shelf" formats, lit up another bulb. We realized there was a lot of value in having a consistent way to represent payload files, service description, deployment configuration, and metadata in RDF format, and the **KGrid Packaging Spec** was born.
+Having two different components that used a common entity, the KO, and the addition of import/export capabilities for these common "Shelf" implementations, lit up another bulb. We realized there was a lot of value in having a consistent way to represent these dual-natured knowledge objects — payload files, service description, deployment configuration and metadata in RDF format — and the **KGrid Packaging Spec** was born.
 
 ## What else did we learn?
 
-HAving a separate component to play with, we started to focus more deeply on the *Activation* of CBK. We implemented a wider variety of CBK which put a lot of demands on our techniques for creating and deploying payloads in different runtime environments.
+Having a separate component to play with, we started to focus more deeply on the *Activation* of CBK. We implemented a wider variety of CBK which put a lot of demands on our techniques for creating and deploying payloads in different runtime environments.
 
 ### Going from K -> K' is *hard*
 
@@ -63,7 +63,7 @@ SMART apps, Web UIs, batch processes, Javascript, Node.js, RESTful APIs, event-d
 
 # So we split things up some more (Adapters and Runtimes) 
 
-This move allowed us to uncouple the KO lifecycle (with the Activator as on reference implementation) from the particular demands of real-world CBK and particular use cases. A new contract emerged as we learned:
+This move allowed us to uncouple the KO lifecycle (with the Activator as a reference implementation) from the particular demands of real-world CBK and particular use cases. A new contract emerged as we learned:
 
 > **To move from K => K' there must be:**
 >
@@ -79,19 +79,50 @@ The Activator supplies a couple of these by default:
 
 * An embedded *Javascript* runtime (initially the Nashorn engine, now the GraalVM V8 engine) and adapter. This runtime is suitable for a wide range of simple, stateless CBK and executive (or *controller*) KOs
 * The *Resource* adapter, which allows payload artifacts to be served to clients as static resources (e.g. data or client code to be run in the browser)
-* The *Proxy Adapter* which implements a simple registration and message protocol which external runtimes can implement to handle parts 2. and 3. of the 
-
-We dropped the embedded Python runtime in faveor of an external Python runtime environment that uses the proxy adapter to interact with the Activator
+* The *Proxy Adapter* which implements a simple registration and message protocol which external runtimes can implement to handle parts 2. and 3. above
+* We dropped the embedded Python runtime in favor of an external Python runtime environment that uses the proxy adapter to interact with the Activator
 
 ## What we learned
 
 ### Sometimes you need multiple KOs to implement CBK, sometimes you don't
 
+We definitely went way too far down the road of creating collections of fine-grained objects which cannot be used independently, complicating management and deployment. In general the payload should implement all of a cohesive external API or interface. 
+
+Interactions between API endpoints within the KGrid carry a lot of overhead and complexity.
+
 ### A single KO can contain multiple functions (API endpoints)
+
+For the same reasons as above, composing a coarse-grained API within a single KO make life easier.
 
 ### A single function (or API endpoint) can have mutiple implementations
 
+A single function, interface, or API might be deployed in different scenarios (backend, streaming, in-browser). A KO can provide "shims" to allow the payload to be deployed and the API/interface to be exposed/consumed using different technologies. We now prefer this rather than creating (and duplicating) code for different use cases.
 
+**All that is to say, *Going from K -> K' is *hard*!* It really is a design problem, and designing robust, performant software is a skilled trrade. which leads us to our last piece of learning...** 
+
+### Stay out of the way of the developer!
+
+It is important to let CBK developers/implementors work in their native idioms, use their existing tools, and deploy their code in typical fashion on existing platforms. In fact, the payload of a KO should seldom have any KGrid-specific changes. Instead, we prefer to supply API and deployment configuration with the KO and rely on smart adapters. 
+
+The Activator and the particular runtimes and Adapters supplied by the KGrid team are prototypes and reference implementations of some of the conceptual models specifications developed over the last several years in our lab. Savvy developers should be able to do better than what we've done so far, extending the KGrid and replacing some of the existing components better implementations.
+
+Certainly for CBK development we have barely scratched the surface.
+
+## Two big learnings
+
+### The scale story is elusive
+
+So far, we haven't come up with even a prototype CBK deployment that illustrates a scale story in more than a purely "What if...?" fashion. We just don't have examples of KGridized CBK being used across platforms or institutions, in use to fullfil different end user scenarios, as an accelerator for expanding CBK adoption,composed to support novel applications, used in research *and* clinical applications, used for consumer applications, even horizontally scaled to support wider or quicker adoption in practice.
+
+In simple terms, every real-world use case we've been involved in has been a single deployment to support a single scenario or project, and KGrid has been an added cost without demonstrating it's main benefit, scale.
+
+### Packaged CBK is great! Let the professionals manage and organize it.
+
+Our work with the Taubman and other University of Michigan librarians and outreach to other informatics folks in the library and repository space, made it clear that our concept of a KGrid Library" for managing CBK at scale was naive. We learned:
+* Different communities drive the need for metadata, discovery, archival and dissemination of knowledge *for their own purposes*. The Knowledge Grid cannot hope to meet all these needs. Most repository systems are designed to meet the particular needs of a community. 
+* Our conceptual model (of packaged CBK representing knowledge as a managed resource and knowledge ready for practice) is important! We believe it is a suitable representation for *many* information management platforms, including: asset management, publishing and other communications as part of the scholarly, scientific record, indexing and discovery, and archival needs.
+* We also believe that by conforming to existing and emerging standards and practices from software development, and typical research workflows, we allow for the broadest possible range of CBK to be represented as Knowledge Objects.
+* Our conceptual model of CBK is broad and overlaps with the domain workflow and process models of many other stakeholder groups and users. The Knowledge Grid cannot be successful by constraining how others may publish, use, organize, manage, and preserve their CBK. We must ensure *and demonstrate* interoperability with the widest variety of platforms and workflows.
 
 
 
