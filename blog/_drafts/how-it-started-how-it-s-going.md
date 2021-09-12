@@ -126,5 +126,5 @@ Our work with the Taubman and other University of Michigan librarians and outrea
 
 Interoperability probably includes demonstrating:
 * the packaged KOs can be used in other systems and platforms without special handling
-* the needs of other stakeholders and users can be met within the current KO packaging spec
-* packaged KOs can be transformed to/from or linked with other common formats for CBK and CBK-related artifacts 
+* the needs of other stakeholders and users can be mostly met within the current KO packaging spec, without a lot of contortions
+* packaged KOs can be transformed to/from or linked with other common formats for CBK and CBK-related material 
