@@ -39,17 +39,17 @@ One way to characterize the collection of artifacts that taken together represen
 
 We started down this path by storing every component binary or file within a KO as it's own node within an RDF datastore (including compiled binaries, source code, configuration data, supporting material, etc.) 
 
-But once we separated the KGrid Library (for finding and showing KOs) and the Activator (for getting payloads running) we found the Fedora Commons repo to be way too heavy for the simpler case of managing a "Shelf" of KOs cached locally and ready to be run by an activator. A simple collection of artifacts on the local filesystem was a better fit. The RDF representation was serialized as JSON-LD metadata file (based on the existing Fedora Commons serialization format for RDF containers). Interoperability was maintained.
+But once we separated the KGrid Library (for finding and showing KOs) and the Activator (for getting payloads running) we found the Fedora Commons repo to be way too heavy for the simpler case of managing a "Shelf" of KOs cached locally and ready to be run by an activator. A simple collection of artifacts on the local filesystem was a better fit. The RDF container representation was serialized as JSON-LD metadata file (based on the existing Fedora Commons serialization format for RDF containers). Interoperability was maintained across multiple KO stores.
 
 Having two different components that used a common entity, the KO, and the addition of import/export capabilities for these common "Shelf" implementations, lit up another bulb. We realized there was a lot of value in having a consistent way to represent these dual-natured knowledge objects — payload files, service description, deployment configuration and metadata in RDF format — and the **KGrid Packaging Spec** was born.
 
-## What else did we learn?
+## And what did we learn about running payloads?
 
 Having a separate component to play with, we started to focus more deeply on the *Activation* of CBK. We implemented a wider variety of CBK which put a lot of demands on our techniques for creating and deploying payloads in different runtime environments.
 
 ### Going from K -> K' is *hard*
 
-The needs of CBK creators were a really important consideration. Researchers often produce "computable" results (models, algorithms, functions in code, even spreadsheets). These, even when there are a primary research result, are meant to supplement the published results and discussion. This is part of what makes it difficult to replicate some research — the code is a snapshot of the evolving research understanding and will usually include many assumptions, workarounds, and gaps. (It may also be written by inexperienced programmers with domain knowledge but with less familiarity with software development). The CBK produced at the end of the research pipeline is seldom ready for practice at scale.
+The needs of CBK creators are really important! Researchers often produce "computable" results (models, algorithms, functions in code, even spreadsheets). These, even when there are a primary research result, are meant to supplement the published results and discussion. This is part of what makes it difficult to replicate some research — the code is a snapshot of the evolving research understanding and will usually include many assumptions, workarounds, and gaps. (It may also be written by inexperienced programmers with domain knowledge but with less familiarity with software development). The CBK produced at the end of the research pipeline is seldom ready for practice at scale.
 
 We began to develop a process of deep domain discovery combined with skillful application of a wide variety of modern software development practices in order to move from **K** (the result of the research or other deliberative process) to what we denote as ***K'*** (computable knowledge suitable for deployment at scale). We are still uncovering better ways to do this.
 
